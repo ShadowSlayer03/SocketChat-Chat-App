@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import colors from "colors";
-import path from "path";
 import { Server } from "socket.io";
 import connectDB from "./db/connectDB.js";
 import userRoutes from "./routes/user.route.js";
@@ -43,7 +42,7 @@ const server = app.listen(port, () => {
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://socketchat-client.vercel.app/",
   },
 });
 

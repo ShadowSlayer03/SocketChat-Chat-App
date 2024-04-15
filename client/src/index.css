@@ -5,7 +5,7 @@
   display: flex;
   background-position: center;
   background-size: cover;
-  background-image: url(chat-bg3.jpg);
+  background-image: url(../public/chat-bg3.jpg);
 }
 
 .box {
