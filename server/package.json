@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "npx nodemon server.js",
-    "build": "npm install --legacy-peer-deps && cd ../client && npm install --legacy-peer-deps && npm run build"
+    "dev": "npx nodemon server.js"
   },
   "keywords": [
     "Chat App",
