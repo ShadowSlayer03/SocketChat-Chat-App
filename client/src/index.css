@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Varela+Round&display=swap');
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  background-position: center;
+  background-size: cover;
+  background-image: url(chat-bg3.jpg);
+}
+
+.box {
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  box-shadow: 2px 0px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(11.2px);
+  -webkit-backdrop-filter: blur(11.2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mainbox {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  /* background-color: #000000;
+  background-image: linear-gradient(147deg, #000000 0%, #04619f 74%); */
+  color: black;
+  font-family: "Varela Round",sans-serif;
+  width: 95%;
+  padding: 15px 20px;
+  margin-bottom: 2vw;
+  border-color: transparent;
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+#show-hide-toggle{
+  color: white; 
+  background-color: #3f86dc;
+}
+
+#show-hide-toggle:hover{
+  background-color: rgb(116, 37, 189)
+}
+
+::-webkit-scrollbar{
+  width: 0px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: rgba(136, 136, 136, 0.281);
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: #555;
+}
+
