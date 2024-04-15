@@ -25,21 +25,9 @@ app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
 
-// **DEPLOYMENT CODE **
-const __dirname1 = path.resolve();
-
-if (process.env.NODE_ENV == "production") {
-  console.log(__dirname1);
-  app.use(express.static(path.join(__dirname1, "../client/dist")));
-
-  app.get("*",(req,res)=>{
-    res.sendFile(path.resolve(__dirname1,"..","client","dist","index.html"))
-  })
-} else {
-  app.get("/", (req, res) => {
-    res.send("Welcome to Chat App!");
-  });
-}
+app.get("/", (req, res) => {
+  res.send("Welcome to Chat App!");
+});
 
 app.use(notFound);
 app.use(errorHandler);
