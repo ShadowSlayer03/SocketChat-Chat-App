@@ -143,6 +143,17 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       return;
     }
 
+    if(selectedChat.groupAdmin._id !== user._id){
+      toast({
+          title: "Only Admins can Rename Group!",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+        return;
+  }
+
     try {
       setRenameLoading(true);
 
@@ -156,7 +167,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         `${import.meta.env.VITE_BACKEND_BASE_URL}/api/chat/rename`,
         {
           chatID: selectedChat._id,
-          chatName: groupChatName,
+          newChatName: groupChatName,
         },
         config
       );
@@ -192,7 +203,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(`/api/user?search=${search}`, config);
+      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/user?search=${search}`, config);
       console.log(data);
       setLoading(false);
       setSearchResult(data);
@@ -246,15 +257,6 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 value={groupChatName}
                 onChange={(e) => setGroupChatName(e.target.value)}
               />
-              <Button
-                variant="solid"
-                colorScheme="teal"
-                ml="1"
-                isLoading={renameLoading}
-                onClick={handleRename}
-              >
-                Update
-              </Button>
             </FormControl>
             <FormControl>
               <Input
@@ -262,6 +264,16 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 mb={1}
                 onChange={(e) => handleSearch(e.target.value)}
               />
+              <Button
+                variant="solid"
+                colorScheme="teal"
+                ml="1"
+                my="3"                
+                isLoading={renameLoading}
+                onClick={handleRename}
+              >
+                Update
+              </Button>
             </FormControl>
             {loading ? (
               <Spinner
@@ -273,7 +285,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
               />
             ) : (
               searchResult?.map((user) => {
-                <UserListItem
+                return <UserListItem
                   key={user._id}
                   user={user}
                   handleFunction={() => handleAddUser(user)}
