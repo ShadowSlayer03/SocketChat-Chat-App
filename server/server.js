@@ -42,7 +42,7 @@ const server = app.listen(port, () => {
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://socketchat-client.vercel.app/",
+    origin: process.env.WEBSOCKET_CLIENT,
   },
 });
 

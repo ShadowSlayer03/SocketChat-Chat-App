@@ -14,7 +14,6 @@ import {
   useDisclosure,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
   DrawerHeader,
   DrawerBody,
   Input,
@@ -22,13 +21,13 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ChatState } from "../../context/UserContextProvider";
 import ProfileModal from "./ProfileModal";
 import { useNavigate } from "react-router-dom";
 import ChatLoading from "./ChatLoading";
 import UserListItem from "../userAvatar/UserListItem";
-import NotificationBadge, { Effect } from "react-notification-badge";
+import NotificationBadge from "./NotificationBadge";
 import axios from "axios";
 import { getSender } from "../../config/ChatLogics";
 
@@ -168,11 +167,10 @@ const SideDrawer = () => {
         <div>
           <Menu>
             <MenuButton p={1}>
+              <BellIcon fontSize="2xl" m={1} />
               <NotificationBadge
                 count={notification.length}
-                effect={Effect.SCALE}
               />
-              <BellIcon fontSize="2xl" m={1} />
             </MenuButton>
             <MenuList pl={2}>
               {!notification.length && "No New Messages"}
